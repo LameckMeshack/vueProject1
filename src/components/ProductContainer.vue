@@ -1,11 +1,15 @@
 <template>
   <div>
     <p v-if="loading"><Loading /></p>
-    <ul v-else>
-      <li v-for="(value, key) in products" :key="key">
-        {{ key }} : {{ value }}
-      </li>
-    </ul>
+    <!-- <ul v-else></ul> -->
+    <ProductCard
+      v-for="product in products"
+      :key="product.id"
+      :title="product.title"
+      :price="product.price"
+      :image="product.image"
+      :description="product.description"
+    />
     <p v-if="error">{{ error }}</p>
   </div>
 </template>
@@ -13,6 +17,7 @@
 <script>
 import axios from "axios";
 import Loading from "./Loading.vue";
+import ProductCard from "./ProductCard.vue";
 export default {
   name: "ProductContainer",
   props: {
@@ -35,7 +40,7 @@ export default {
   mounted: function () {
     this.loading = true;
     axios
-      .get("https://fakestoreapi.com/products/1")
+      .get("https://fakestoreapi.com/products")
       .then((res) => {
         this.loading = false;
         this.products = res.data;
@@ -46,7 +51,7 @@ export default {
         this.error = err;
       });
   },
-  components: { Loading },
+  components: { Loading, ProductCard },
 };
 </script>
 
