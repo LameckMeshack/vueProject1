@@ -1,7 +1,7 @@
 <template>
   <div id="login-form-wrap">
     <h2>Login</h2>
-    <form id="login-form">
+    <form id="login-form" @submit.prevent="login">
       <p>
         <input
           type="text"
