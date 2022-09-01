@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="gallery">
     <p v-if="loading"><Loading /></p>
     <!-- <ul v-else></ul> -->
     <ProductCard
@@ -56,4 +56,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+}
+</style>
