@@ -1,15 +1,15 @@
 <template>
   <div class="content">
     <img :src="image" />
-    <h3>{{ title }}</h3>
-    <p>{{ description }}</p>
+    <h3>{{ title.split(" ").splice(0, 3).join(" ") }}</h3>
+    <p>{{ description.split(" ").splice(0, 12).join(" ") }}</p>
     <h6>{{ price }}</h6>
     <ul>
+      <!-- <li><i class="fa fa-star" aria-hidden="true"></i></li> -->
+      <!-- <li><i class="fa fa-star" aria-hidden="true"></i></li>
       <li><i class="fa fa-star" aria-hidden="true"></i></li>
       <li><i class="fa fa-star" aria-hidden="true"></i></li>
-      <li><i class="fa fa-star" aria-hidden="true"></i></li>
-      <li><i class="fa fa-star" aria-hidden="true"></i></li>
-      <li><i class="fa fa-star" aria-hidden="true"></i></li>
+      <li><i class="fa fa-star" aria-hidden="true"></i></li> -->
     </ul>
     <button class="buy-1">Buy Now</button>
   </div>
@@ -96,13 +96,13 @@ li {
 }
 .fa {
   color: #ff9f43;
-  font-size: 26px;
+  font-size: 10px;
   transition: 0.4s;
 }
-.fa:hover {
+/* .fa:hover {
   transform: scale(1.3);
   transition: 0.6s;
-}
+} */
 button {
   text-align: center;
   font-size: 24px;
