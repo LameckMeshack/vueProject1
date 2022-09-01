@@ -13,10 +13,10 @@
       </p>
       <p>
         <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Email Address"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="password "
           required
         /><i class="validation"><span></span><span></span></i>
       </p>
@@ -38,12 +38,28 @@ export default {
   data() {
     return {
       username: "",
-      email: "",
+      password: "",
     };
   },
+  // methods: {
+  //   login() {
+  //     this.$router.push("/");
+  //   },
+  // },
   methods: {
     login() {
-      this.$router.push("/");
+      fetch("localhost:4000/users/authenticate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // username: this.username,
+          // password: this.password,
+          username: "test",
+          password: "test",
+        }),
+      });
     },
   },
 };
