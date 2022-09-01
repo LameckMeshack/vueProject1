@@ -17,6 +17,11 @@ const routes = [
     component: LoginView,
   },
   {
+    path: "/product:id",
+    name: "product",
+    component: LoginView,
+  },
+  {
     path: "/about",
     name: "about",
     // route level code-splitting
