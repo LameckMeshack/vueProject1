@@ -32,10 +32,10 @@ export default {
     //   }
     // },
   },
-  created: function () {
+  mounted: function () {
     this.loading = true;
     axios
-      .get("https://fakestoreapi.com/products")
+      .get("https://fakestoreapi.com/products/1")
       .then((res) => {
         this.loading = false;
         this.products = res.data;
