@@ -47,17 +47,18 @@ export default {
   //   },
   // },
   methods: {
-    login() {
-      fetch("localhost:4000/users/authenticate", {
+    async login(e) {
+      e.preventDefault();
+      const response = await fetch("localhost:4000/users/authenticate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          // username: this.username,
+          //username: this.username,
           // password: this.password,
-          username: "test",
-          password: "test",
+          username: this.username,
+          password: this.password,
         }),
       });
     },
