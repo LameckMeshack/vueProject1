@@ -1,5 +1,13 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <SingleProduct />
   </div>
 </template>
+<script>
+import SingleProduct from "@/components/SingleProduct.vue";
+
+export default {
+  name: "HomeView",
+  components: { SingleProduct },
+};
+</script>
