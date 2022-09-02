@@ -44,7 +44,6 @@ export default {
       .then((res) => {
         this.loading = false;
         this.products = res.data;
-        console.log(this.products);
       })
       .catch((err) => {
         this.loading = false;
