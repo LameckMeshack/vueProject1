@@ -11,8 +11,8 @@
         <div class="half">
           <div class="featured_text">
             <h1>Nurton</h1>
-            <p class="sub">Office Chair</p>
-            <p class="price">$210.00</p>
+            <p class="sub"></p>
+            <p class="price">{{ product.price }}</p>
           </div>
           <div class="image">
             <img
@@ -24,10 +24,7 @@
         <div class="half">
           <div class="description">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-              voluptatem nam pariatur voluptate perferendis, asperiores
-              aspernatur! Porro similique consequatur, nobis soluta minima,
-              quasi laboriosam hic cupiditate perferendis esse numquam magni.
+              {{ product.description }}
             </p>
           </div>
           <span class="stock"><i class="fa fa-pen"></i> In stock</span>
@@ -62,7 +59,39 @@ main {
 }
 </style>
 <script>
+import axios from "axios";
 export default {
   name: "SingleProduct",
+  // getting based on the product id,
+
+  data() {
+    return {
+      product: {
+        id: "",
+        title: "",
+        price: "",
+        image: "",
+        description: "",
+      },
+    };
+  },
+  // async created() {
+  //   const { id } = this.$route.params;
+  //   const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+  //   this.product = await response.data;
+  //   console.log(response);
+  // },
+  methods: {
+    async fetchProduct() {
+      const { id } = this.$route.params;
+
+      const response = await axios.get(
+        `https://fakestoreapi.com/products/${id}`
+      );
+      this.product = response.data;
+      console.log(response);
+      console.log("hello");
+    },
+  },
 };
 </script>

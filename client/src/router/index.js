@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/Login.vue";
+import SingleProduct from "../components/SingleProduct.vue";
 
 Vue.use(VueRouter);
 
@@ -17,9 +18,9 @@ const routes = [
     component: LoginView,
   },
   {
-    path: "/product:id",
+    path: "/:id",
     name: "product",
-    component: LoginView,
+    component: SingleProduct,
   },
   {
     path: "/about",
