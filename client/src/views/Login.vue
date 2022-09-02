@@ -46,7 +46,7 @@ export default {
     ...mapMutations(["setUser", "setToken"]),
     async login(e) {
       e.preventDefault();
-      const response = await fetch("http://localhost:4000/users/authenticate", {
+      const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,6 +59,7 @@ export default {
       const { user, token } = await response.json();
       this.setUser(user);
       this.setToken(token);
+      console.log(user);
     },
   },
 };
