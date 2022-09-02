@@ -16,7 +16,15 @@ export default new Vuex.Store({
       state.token = token;
     },
   },
-  actions: {},
+  actions: {
+    login({ commit }, user) {
+      commit("setUser", user);
+      commit("setToken", user.token);
+    },
+    logout({ commit }) {
+      commit("setUser", null);
+    },
+  },
   getters: {
     isLoggedIn(state) {
       return !!state.token;

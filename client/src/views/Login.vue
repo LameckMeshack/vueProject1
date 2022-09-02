@@ -8,6 +8,7 @@
           id="username"
           name="username"
           placeholder="Username"
+          v-model="username"
           required
         /><i class="validation"><span></span><span></span></i>
       </p>
@@ -17,6 +18,7 @@
           id="password"
           name="password"
           placeholder="password "
+          v-model="password"
           required
         /><i class="validation"><span></span><span></span></i>
       </p>
@@ -67,7 +69,7 @@ export default {
 
 <script>
 import axios from "axios";
-import { mapMutations } from "vuex";
+// import { mapActions } from "vuex";
 export default {
   name: "LoginForm",
   data: () => {
@@ -77,24 +79,27 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["setUser", "setToken"]),
+    // ...mapActions(["setUser", "setToken"]),
     async login(e) {
       e.preventDefault();
       const response = await axios.post("http://localhost:3000/login", {
         username: this.username,
         password: this.password,
       });
-      const { user, token } = response.data;
-      this.setUser(user);
-      this.setToken(token);
-      console.log(response);
-      this.$router.push("/");
+      const { token, user } = response.data;
+      // this.setUser(user);
+      // this.setToken(token);
+      // console.log(user);
+      // console.log(token);
+      // login action
+      this.$store.dispatch("login", { token, user });
+
+      this.$router.push({ name: "home" });
     },
   },
 };
 </script>
+
 <style lang="scss">
 @import "../assets/css/styles.scss";
 </style>
-
-<!-- const response = await fetch("localhost:4000/users/authenticate", { -->
