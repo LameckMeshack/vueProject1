@@ -32,7 +32,7 @@
     <!--create-account-wrap-->
   </div>
 </template>
-<script>
+<!-- <script>
 import { mapMutations } from "vuex";
 export default {
   name: "LoginForm",
@@ -60,6 +60,35 @@ export default {
       this.setUser(user);
       this.setToken(token);
       console.log(user);
+    },
+  },
+};
+</script> -->
+
+<script>
+import axios from "axios";
+import { mapMutations } from "vuex";
+export default {
+  name: "LoginForm",
+  data: () => {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    ...mapMutations(["setUser", "setToken"]),
+    async login(e) {
+      e.preventDefault();
+      const response = await axios.post("http://localhost:3000/login", {
+        username: this.username,
+        password: this.password,
+      });
+      const { user, token } = response.data;
+      this.setUser(user);
+      this.setToken(token);
+      console.log(response);
+      this.$router.push("/");
     },
   },
 };
